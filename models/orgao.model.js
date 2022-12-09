@@ -1,6 +1,6 @@
 import {model, Schema } from "mongoose"
 
-const companySchema  = new Schema({
+const orgaoSchema  = new Schema({
 
     nome: {
         type: String,
@@ -19,12 +19,11 @@ const companySchema  = new Schema({
         type: String,
         default:"inserir link para imagem padrão"
     }
-   // tags: {}
 },
     {timestamps: true}
 
 )
 
-const CompanyModel = model("Company", boardSchema)
+const OrgaoModel = model("Company", orgaoSchema)
 
-export default CompanyModel
+export default OrgaoModel

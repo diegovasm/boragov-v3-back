@@ -1,4 +1,4 @@
-import {model, Schema } from "mongoose"
+import mongoose, {model, Schema } from "mongoose"
 
 const boardSchema  = new Schema({
 
@@ -11,26 +11,35 @@ const boardSchema  = new Schema({
         type: String,
         required: true
     },
-    conteudo: {},
-    respostas: {type: String},
-    comentarios: {type: String},
+    conteudo: {
+        type: String,
+        required: true
+    },
+    respostas: 
+        {
+            resContent: {type: String},
+            userAnswer_id:
+            {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: "User"
+            }
+        },
+    comentarios: 
+        {
+            comContent: {type: String},
+            userComment_id:
+            {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: "User"
+            }
+        },
     visualizacoes: {type: Number},
     votos: {type: Number},
-    tags:
-     [
-        {
-            nome: {type: String},
-            required: true,
-            unique: true
-        },
-        {
-            descricao: {type: String},
-            required: true
-        },
-        {
-            contador: {type: Number}
-        }
-    ]
+   
+    userBoardOwner_id:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User"
+    }
 },
     {
         timestamps:true
