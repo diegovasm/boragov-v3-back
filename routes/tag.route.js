@@ -93,7 +93,7 @@ TagRouter.get("/tag/:id", async (req, res) => {
 
 
 
-  export default TagRouter;
+  export default TagRouter
 
 
 
