@@ -3,6 +3,7 @@ import mongoose, {model, Schema } from "mongoose"
 const boardSchema  = new Schema({
 
     categoria: {
+        type: String,
         enum:["Questão","Artigo"],
         default: "Questão",
         required: true
