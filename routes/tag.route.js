@@ -1,9 +1,9 @@
 import express from "express";
 import TagModel from "../models/tag.model"
 
-const TagRouter = express.Router();
+const tagRouter = express.Router();
 
-TagRouter.get("/alltag", async (req,res) => {
+tagRouter.get("/alltag", async (req,res) => {
     try {
        // precisa popular as tags?
         const allTags = await TagModel.find({}).sort({nome: 1})
@@ -16,7 +16,7 @@ TagRouter.get("/alltag", async (req,res) => {
     }
 })
 
-TagRouter.get("/tag/:id", async (req, res) => {
+tagRouter.get("/tag/:id", async (req, res) => {
   // op~ção de rota "one/tag/:id"
     try {
       const { id } = req.params;
@@ -35,7 +35,7 @@ TagRouter.get("/tag/:id", async (req, res) => {
     }
   });
 
-  TagRouter.post("/create", async (req, res) => {
+  tagRouter.post("/create", async (req, res) => {
     try {
       const newTag = await TagModel.create(req.body);
 
@@ -48,7 +48,7 @@ TagRouter.get("/tag/:id", async (req, res) => {
     }
   });
 
-  TagRouter.put("/edit/:id", async (req, res) => {
+  tagRouter.put("/edit/:id", async (req, res) => {
     try {
       const { id } = req.params;
   
@@ -65,7 +65,7 @@ TagRouter.get("/tag/:id", async (req, res) => {
     }
   });
 
-  TagRouter.delete("/delete/:id", async (req, res) => {
+  tagRouter.delete("/delete/:id", async (req, res) => {
     try {
       const { id } = req.params;
   
@@ -93,12 +93,12 @@ TagRouter.get("/tag/:id", async (req, res) => {
 
 
 
-  export default TagRouter
+  export default tagRouter
 
 
 
 
-
+  image.png
 
 
 
