@@ -1,5 +1,5 @@
 import express from "express"
-import OrgaoModel from "../models/orgao.model";
+import OrgaoModel from "../models/orgao.model.js";
 
 const router = express.Router()
 
