@@ -1,5 +1,5 @@
 import express from "express";
-import TagModel from "../models/tag.model"
+import TagModel from '../models/tag.model.js'
 
 const tagRouter = express.Router();
 
@@ -91,18 +91,4 @@ tagRouter.get("/tag/:id", async (req, res) => {
     }
   });
 
-
-
   export default tagRouter
-
-
-
-
-  image.png
-
-
-
-
-
-
-

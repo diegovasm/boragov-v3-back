@@ -24,6 +24,6 @@ const orgaoSchema  = new Schema({
 
 )
 
-const OrgaoModel = model("Company", orgaoSchema)
+const OrgaoModel = model("Orgao", orgaoSchema)
 
 export default OrgaoModel
