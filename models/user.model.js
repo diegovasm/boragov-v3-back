@@ -43,6 +43,10 @@ const userSchema = new Schema(
       enum: ["usuário", "admin"],
       default: "usuário",
     },
+    isAdmin: {
+      type: Boolean,
+      default: false,
+    }
   },
   { timestamps: true }
 );
