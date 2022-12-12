@@ -25,7 +25,7 @@ app.use(express.json())
 //arquivos css também deveriam ser alocados dentro dessa pasta?
 //app.use(express.static('public'))
 
-//desenhar as rotas e substituir essas  aqui.
+
 app.use('/board', boardRouter)
 app.use('/orgao', orgaoRouter)
 app.use('/tag', tagRouter)
