@@ -18,7 +18,7 @@ const boardSchema  = new Schema({
     },
     respostas: 
         {
-            resContent: {type: String},
+            resContent: {type: Object},
             userAnswer_id:
             {
                 type: mongoose.Schema.Types.ObjectId,
