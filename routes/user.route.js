@@ -2,7 +2,7 @@ import express from "express"
 import UserModel from '../models/user.model.js'
 
 const router = express.Router()
-
+const rounds = 10
 
 // esta rota recupera os dados para a tela de users, localizada no menu lateral.
 router.get("/", async (request, response) => {
@@ -27,6 +27,11 @@ router.get("/", async (request, response) => {
       const { id } = request.params;
   
       const getUserById = await UserModel.findById(id).populate("nome");
+
+      if(!getUserById){
+
+        return response.status(404).json({msg: "Usuário não encontrado."})
+      }
   
       return response.status(200).json(getUserById);
     } catch (error) {
@@ -59,9 +64,9 @@ router.get("/", async (request, response) => {
     try {
       const { id } = request.params;
   
-      const deleteUser = await UserModel.findByIdAndDelete(id);
+      await UserModel.findByIdAndDelete(id);
   
-      return response.status(200).json(deleteUser);
+      return response.status(200).json({msg: "Usuário deletado com sucesso."});
     } catch (error) {
       console.log(error);
       return response.status(500).json({ msg: "Erro ao deletar o usuário." });
@@ -73,17 +78,61 @@ router.get("/", async (request, response) => {
   router.post("/cadastrar", async (request, response) => {
     try {
         
-      const createNew = await UserModel.create({
-        ...request.body
+      const { password } = request.body;
+
+      if(!password){
+        return response.status(400).json({msg:"senha não foi inserida"});
+      }
+
+      const saltString = await bcrypt.genSalt(rounds);
+      const hashPassword = await bcrypt.hash(password, saltString);
+
+
+      const user = await UserModel.create({
+        ...request.body,
+        password: hashPassword,
       });
+
+      delete user._doc.password;
   
-      return response.status(201).json(createNew);
+      return response.status(201).json(user);
     } catch (error) {
       console.log(error);
       return response.status(500).json({ msg: "Erro ao criar o usuário." });
     }
   });
   
+  //===================== LOGIN ===================
+
+  router.post("/login", async (request, response) => {
+    try {
+      const { email, password } = request.body;
   
+      const user = await UserModel.findOne({ email: email });
+  
+      if (!user) {
+        return response
+          .status(400)
+          .json({ msg: "senha e e-mail não estão cadastrados" });
+      }
+  
+      if (await bcrypt.compare(password, user.password)) {
+        delete user._doc.password;
+        const token = generateToken(user);
+  
+        return response.status(200).json({
+          user: { ...user._doc },
+          token: token,
+        });
+      } else {
+        return response
+          .status(401)
+          .json({ msg: "senha e e-mail não estão corretos" });
+      }
+    } catch (error) {
+      console.log(error);
+      return response.status(500).json({ msg: "Algo deu errado no login" });
+    }
+  });
 
 export default router;

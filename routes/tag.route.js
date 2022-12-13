@@ -39,7 +39,7 @@ tagRouter.get("/tag/:id", async (req, res) => {
     try {
       const newTag = await TagModel.create(req.body);
 
-    return res.status(200).json(newTag);
+    return res.status(200).json({msg: "Ta cadastrada com sucesso."});
      
   
     } catch (error) {
