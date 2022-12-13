@@ -1,5 +1,6 @@
 import express from "express"
 import UserModel from '../models/user.model.js'
+import bcrypt from 'bcrypt'
 
 const router = express.Router()
 const rounds = 10
