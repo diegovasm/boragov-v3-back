@@ -40,8 +40,9 @@ const userSchema = new Schema(
     },
     role: {
       type: String,
-      enum: ["usuário", "admin"],
-      default: "usuário",
+      enum: ["usuario", "admin"],
+      default: "usuario",
+      required: true
     },
     isAdmin: {
       type: Boolean,
