@@ -13,7 +13,7 @@ const boardSchema  = new Schema({
         required: true
     },
     conteudo: {
-        type: String,
+        type: Object,
         required: true
     },
     respostas: 
