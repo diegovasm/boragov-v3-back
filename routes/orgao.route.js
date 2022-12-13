@@ -34,7 +34,7 @@ orgaoRouter.post("/cadastrar", async (req, res) => {
       ...req.body,
     });
 
-    return res.status(201).json(createNew);
+    return res.status(201).json({msg: "Órgão cadastrado com sucesso."});
   } catch (error) {
     console.log(error);
     return res.status(500).json({ msg: "Erro ao criar o orgao." });
