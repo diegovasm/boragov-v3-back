@@ -17,7 +17,7 @@ dbConnect()
 const app = express()
 
 app.use(cors({origin: process.env.REACT_URL}))
-app.use(express.json())
+app.use(express.json({ limit: '10MB' }))
 
 // avaliar se vale a pena criar a psta public com imagens
 //estáticas que serão enviadas a todos os usuários.

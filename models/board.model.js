@@ -13,12 +13,12 @@ const boardSchema  = new Schema({
         required: true
     },
     conteudo: {
-        type: String,
+        type: Object,
         required: true
     },
     respostas: 
         {
-            resContent: {type: String},
+            resContent: {type: Object},
             userAnswer_id:
             {
                 type: mongoose.Schema.Types.ObjectId,
