@@ -75,7 +75,7 @@ router.get("/", async (request, response) => {
   
 
   // ======= Tratamento das rotas de cadastro (Signup)=============
-  router.post("/cadastrar", async (request, response) => {
+  router.post("/signup", async (request, response) => {
     try {
         
       const { password } = request.body;
