@@ -1,6 +1,7 @@
 import express from "express"
 import UserModel from '../models/user.model.js'
 import bcrypt from 'bcrypt'
+import generateToken from "../config/jwt.config.js"
 
 const router = express.Router()
 const rounds = 10
@@ -109,7 +110,7 @@ router.get("/", async (request, response) => {
     try {
       const { email, password } = request.body;
   
-      const user = await UserModel.findOne({ email: email });
+      const user = await UserModel.findOne({ emailPessoal: email });
   
       if (!user) {
         return response
