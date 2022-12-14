@@ -117,8 +117,10 @@ router.get("/", async (request, response) => {
           .status(400)
           .json({ msg: "senha e e-mail não estão cadastrados" });
       }
-  
+      console.log(`Request.body Password ${password}`)
+      console.log(`UerModel Password ${user.password}`)
       if (await bcrypt.compare(password, user.password)) {
+
         delete user._doc.password;
         const token = generateToken(user);
   
