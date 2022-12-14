@@ -5,9 +5,7 @@ const orgaoRouter = express.Router();
 
 orgaoRouter.get("/", async (req, res) => {
   try {
-    console.log("Chegou na rota dos orgaos")
     const allOrgaos = await OrgaoModel.find().sort({ nome: 1 });
-    console.log(allOrgaos)
     return res.status(200).json(allOrgaos);
   } catch (error) {
     console.log(error);
