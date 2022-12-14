@@ -108,9 +108,9 @@ router.get("/", async (request, response) => {
 
   router.post("/login", async (request, response) => {
     try {
-      const { emailPessoal, password } = request.body;
+      const { emailInstitucional, password } = request.body;
   
-      const user = await UserModel.findOne({ emailPessoal: emailPessoal });
+      const user = await UserModel.findOne({ emailInstitucional: emailInstitucional });
   
       if (!user) {
         return response
