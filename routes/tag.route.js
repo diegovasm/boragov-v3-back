@@ -6,7 +6,7 @@ const tagRouter = express.Router();
 tagRouter.get("/alltag", async (req,res) => {
     try {
        // precisa popular as tags?
-        const allTags = await TagModel.find({}).sort({nome: 1})
+        const allTags = await TagModel.find().sort({nome: 1})
         return res.status(200).json(allTags)
         
     } catch (error) {

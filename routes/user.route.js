@@ -10,11 +10,9 @@ const rounds = 10
 router.get("/", async (request, response) => {
     try {
       const users = await UserModel.find()
-        .populate("nome");
           
       return response.status(200).json(users);
     } catch (error) {
-      console.log(error);
   
       return response.status(500).json({ msg: "Erro ao retornar os usuários." });
     }
@@ -37,7 +35,6 @@ router.get("/", async (request, response) => {
   
       return response.status(200).json(getUserById);
     } catch (error) {
-      console.log(error);
   
       return response.status(500).json({ msg: "Erro ao retornar o usuário." });
     }
@@ -56,7 +53,7 @@ router.get("/", async (request, response) => {
   
       return response.status(200).json(update);
     } catch (error) {
-      console.log(error);
+      
       return response.status(500).json({ msg: "Erro ao atualizar o perfil do usuário." });
     }
   });
@@ -70,7 +67,7 @@ router.get("/", async (request, response) => {
   
       return response.status(200).json({msg: "Usuário deletado com sucesso."});
     } catch (error) {
-      console.log(error);
+      
       return response.status(500).json({ msg: "Erro ao deletar o usuário." });
     }
   });
@@ -99,7 +96,7 @@ router.get("/", async (request, response) => {
   
       return response.status(201).json(user);
     } catch (error) {
-      console.log(error);
+    
       return response.status(500).json({ msg: "Erro ao criar o usuário." });
     }
   });
@@ -117,8 +114,7 @@ router.get("/", async (request, response) => {
           .status(400)
           .json({ msg: "senha e e-mail não estão cadastrados" });
       }
-      console.log(`Request.body Password ${password}`)
-      console.log(`UerModel Password ${user.password}`)
+ 
       if (await bcrypt.compare(password, user.password)) {
 
         delete user._doc.password;
@@ -134,7 +130,7 @@ router.get("/", async (request, response) => {
           .json({ msg: "senha e e-mail não estão corretos" });
       }
     } catch (error) {
-      console.log(error);
+      
       return response.status(500).json({ msg: "Algo deu errado no login" });
     }
   });
