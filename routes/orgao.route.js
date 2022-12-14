@@ -5,7 +5,7 @@ const orgaoRouter = express.Router();
 
 orgaoRouter.get("/", async (req, res) => {
   try {
-    const allOrgaos = await OrgaoModel.find({}).sort({ nome: 1 });
+    const allOrgaos = await OrgaoModel.find().sort({ nome: 1 });
     return res.status(200).json(allOrgaos);
   } catch (error) {
     console.log(error);
