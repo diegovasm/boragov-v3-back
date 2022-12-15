@@ -26,7 +26,7 @@ router.get("/", async (request, response) => {
     try {
       const { id } = request.params;
   
-      const getUserById = await UserModel.findById(id).populate("nome");
+      const getUserById = await UserModel.findById(id);
 
       if(!getUserById){
 
