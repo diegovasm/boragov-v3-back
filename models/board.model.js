@@ -24,9 +24,6 @@ const boardSchema = new Schema(
           ref: "User",
         },
       },
-    //   {
-    //     timestamps: true,
-    //   }
     ],
     qtdRespostas: { type: Number },
     comentarios: [
@@ -37,9 +34,6 @@ const boardSchema = new Schema(
           ref: "User",
         },
       },
-    //   {
-    //     timestamps: true,
-    //   }
     ],
     visualizacoes: { type: Number },
     votos: { type: Number },
