@@ -6,7 +6,7 @@ const router = express.Router()
 
 router.get("/", async (request, response) => {
     try {
-      const boards = await BoardModel.find({}, 'categoria titulo votos visualizacoes userBoardOwner_id tags orgao')
+      const boards = await BoardModel.find({}, 'categoria titulo votos visualizacoes userBoardOwner_id tags orgao qtdRespostas')
       .populate("userBoardOwner_id")
       .populate("tags")
       .populate("orgao")
