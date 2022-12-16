@@ -23,7 +23,10 @@ router.get("/", async (request, response) => {
     try {
       const { id } = request.params;
   
-      const getBoardById = await BoardModel.findById(id).populate("userBoardOwner_id");
+      const getBoardById = await BoardModel.findById(id)
+      .populate("userBoardOwner_id")
+      .populate("tags")
+      .populate("orgao")
   
       return response.status(200).json(getBoardById);
     } catch (error) {
