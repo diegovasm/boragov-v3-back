@@ -51,7 +51,7 @@ router.get("/", async (request, response) => {
   
       const createNew = await BoardModel.create({
         ...request.body,
-        userBoardId: userId,
+        userBoardOwner_id: userId,
       });
   
       return response.status(201).json(createNew);
