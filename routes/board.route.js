@@ -27,8 +27,8 @@ router.get("/", async (request, response) => {
       .populate("userBoardOwner_id")
       .populate("tags")
       .populate("orgao")
-      .populate("userAnswer_id")
-      .populate("userComment_id")
+      // .populate("userAnswer_id")
+      // .populate("userComment_id")
   
       return response.status(200).json(getBoardById);
     } catch (error) {
