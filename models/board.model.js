@@ -25,6 +25,7 @@ const boardSchema = new Schema(
         },
       },
     ],
+    qtdRespostas: { type: Number },
     comentarios: [
       {
         comContent: { type: String },
