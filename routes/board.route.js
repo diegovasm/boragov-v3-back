@@ -39,8 +39,9 @@ router.get("/", async (request, response) => {
   router.get("/buscar/:query", async (request, response) => {
     try {
       const { query } = request.params;
+      const criterio = `{titulo: /${query}/, insert: /${query}/}`
   
-      const getBoardsByQuery = await BoardModel.find({titulo: query, conteudo: query, respostas: query})
+      const getBoardsByQuery = await BoardModel.find(criterio)
       return response.status(200).json(getBoardsByQuery);
     } catch (error) {
       console.log(error);
