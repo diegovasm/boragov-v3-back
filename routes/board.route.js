@@ -27,8 +27,6 @@ router.get("/", async (request, response) => {
       .populate("userBoardOwner_id")
       .populate("tags")
       .populate("orgao")
-      // .populate("userAnswer_id")
-      // .populate("userComment_id")
   
       return response.status(200).json(getBoardById);
     } catch (error) {
@@ -42,7 +40,7 @@ router.get("/", async (request, response) => {
     try {
       const { query } = request.params;
   
-      const getBoardsByQuery = await BoardModel.find(query)
+      const getBoardsByQuery = await BoardModel.find({titulo: query, conteudo: query, respostas: query})
       return response.status(200).json(getBoardsByQuery);
     } catch (error) {
       console.log(error);
