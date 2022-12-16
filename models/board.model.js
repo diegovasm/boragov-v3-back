@@ -37,9 +37,9 @@ const boardSchema = new Schema(
           ref: "User",
         },
       },
-    //   {
-    //     timestamps: true,
-    //   }
+      {
+        timestamps: true,
+      }
     ],
     visualizacoes: { type: Number },
     votos: { type: Number },
@@ -58,9 +58,9 @@ const boardSchema = new Schema(
       ref: "Orgao",
     },
   },
-//   {
-//     timestamps: true,
-//   }
+  {
+    timestamps: true,
+  }
 );
 
 const BoardModel = model("Board", boardSchema);
