@@ -1,52 +1,59 @@
-import mongoose, {model, Schema } from "mongoose"
+import mongoose, { model, Schema } from "mongoose";
 
-const boardSchema  = new Schema({
-
+const boardSchema = new Schema(
+  {
     categoria: {
-        type: String,
-        enum:["Questão","Artigo"],
-        default: "Questão",
-        required: true
+      type: String,
+      enum: ["Questão", "Artigo"],
+      default: "Questão",
+      required: true,
     },
     titulo: {
-        type: String,
-        required: true
+      type: String,
+      required: true,
     },
     conteudo: {
-        type: Object,
-        required: true
+      type: Object,
+      required: true,
     },
-    respostas: 
-        {
-            resContent: {type: Object},
-            userAnswer_id:
-            {
-                type: mongoose.Schema.Types.ObjectId,
-                ref: "User"
-            }
-        },
-    comentarios: 
-        {
-            comContent: {type: String},
-            userComment_id:
-            {
-                type: mongoose.Schema.Types.ObjectId,
-                ref: "User"
-            }
-        },
-    visualizacoes: {type: Number},
-    votos: {type: Number},
-   
-    userBoardOwner_id:{
+    respostas: {
+      resContent: { type: Object },
+      userAnswer_id: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "User"
-    }
-},
-    {
-        timestamps:true
-    }
-)
+        ref: "User",
+      },
+    },
+    comentarios: [
+      {
+        comContent: { type: String },
+        userComment_id: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "User",
+        },
+      },
+    ],
+    visualizacoes: { type: Number },
+    votos: { type: Number },
+    userBoardOwner_id: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+    },
+    tags: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Tag",
+      },
+    ],
+    orgao: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Orgao",
+    },
+  },
+  {
+    timestamps: true,
+  }
+);
 
-const BoardModel = model("Board", boardSchema)
+const BoardModel = model("Board", boardSchema);
 
-export default BoardModel
+export default BoardModel;
