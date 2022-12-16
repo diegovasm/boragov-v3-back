@@ -6,15 +6,16 @@ const router = express.Router()
 
 router.get("/", async (request, response) => {
     try {
-      const boards = await BoardModel.find({}, 'categoria titulo votos visualizacoes')
-        
-        
-          
+      const boards = await BoardModel.find({}, 'categoria titulo votos visualizacoes userBoardOwner_id tags orgao')
+      .populate("userBoardOwner_id")
+      .populate("tags")
+      .populate("orgao")
+                        
       return response.status(200).json(boards);
     } catch (error) {
       console.log(error);
   
-      return response.status(500).json({ msg: "Erro ao retornar os boards." });
+      return response.status(500).json({ msg: "Erro ao retornar os boards."});
     }
   });
   
