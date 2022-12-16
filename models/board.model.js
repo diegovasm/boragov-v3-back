@@ -18,32 +18,28 @@ const boardSchema = new Schema(
     },
     respostas: [
       {
-        type: new mongoose.Schema(
-          {
-            resContent: { type: Object },
-            userAnswer_id: {
-              type: mongoose.Schema.Types.ObjectId,
-              ref: "User",
-            },
-          },
-          { timestamps: true }
-        ),
+        resContent: { type: Object },
+        userAnswer_id: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "User",
+        },
       },
+    //   {
+    //     timestamps: true,
+    //   }
     ],
     qtdRespostas: { type: Number },
     comentarios: [
       {
-        type: new mongoose.Schema(
-          {
-            comContent: { type: String },
-            userComment_id: {
-              type: mongoose.Schema.Types.ObjectId,
-              ref: "User",
-            },
-          },
-          { timestamps: true }
-        ),
+        comContent: { type: String },
+        userComment_id: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "User",
+        },
       },
+    //   {
+    //     timestamps: true,
+    //   }
     ],
     visualizacoes: { type: Number },
     votos: { type: Number },
