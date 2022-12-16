@@ -16,13 +16,15 @@ const boardSchema = new Schema(
       type: Object,
       required: true,
     },
-    respostas: {
-      resContent: { type: Object },
-      userAnswer_id: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "User",
+    respostas: [
+      {
+        resContent: { type: Object },
+        userAnswer_id: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "User",
+        },
       },
-    },
+    ],
     comentarios: [
       {
         comContent: { type: String },
